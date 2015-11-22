@@ -1,21 +1,5 @@
-#!flask/bin/python
+#!/usr/bin/python
 from flask import Flask, jsonify, request
-
-'''
-pip install virtualenv
-virtualenv flask
-flask/bin/pip install flask
-chmod +x api.py
-./api.py
-http://localhost:5000/
-curl -i -H "Content-Type: application/json" -X POST -d '{"action":"lights"}' http://localhost:5000/api
-
-curl -i -H "Content-Type: application/json" -X POST -d '{"action":"alert"}' http://localhost:5000/api
-
-curl -i -H "Content-Type: application/json" -X POST -d '{"action":"confirm"}' http://localhost:5000/api
-
-curl -i -H "Content-Type: application/json" -X POST -d '{"action":"reset"}' http://localhost:5000/api
-'''
 
 def respond(resp):
 	return jsonify({'response': resp}),201
@@ -55,5 +39,6 @@ def lights():
     return actions[request.json['action']]()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.debug = True
+    app.run(host='0.0.0.0')
     
