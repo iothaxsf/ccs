@@ -30,7 +30,7 @@ def alert():
 	return respond("alert")
 
 def reset():
-	return respond("alert")
+	return respond("reset")
 	
 app = Flask(__name__)
 
